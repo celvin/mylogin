@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>User</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Facebookid</th>
+                <td>{{ user.facebookID }}</td>
+            </tr>
+            <tr>
+                <th>Fullname</th>
+                <td>{{ user.fullName }}</td>
+            </tr>
+            <tr>
+                <th>Phonenumber</th>
+                <td>{{ user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Createdatetime</th>
+                <td>{% if user.createDatetime %}{{ user.createDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedatetime</th>
+                <td>{% if user.updateDatetime %}{{ user.updateDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lastlogindatetime</th>
+                <td>{% if user.lastLoginDatetime %}{{ user.lastLoginDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fullyfilled</th>
+                <td>{% if user.fullyFilled %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Profilepicture</th>
+                <td>{{ user.profilePicture }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userlocal_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('userlocal_edit', { 'id': user.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

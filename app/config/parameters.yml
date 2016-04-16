@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: mylogin
+    database_user: root
+    database_password: mysql51M
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ece5a02ba191de729d7d8420ae84c5f75cb9637b
+    facebook_client_id: 621242591364459
+    facebook_client_secret: bae3c8180108c418e065f6f671774ac6

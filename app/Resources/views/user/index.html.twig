@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>User list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Facebookid</th>
+                <th>Fullname</th>
+                <th>Phonenumber</th>
+                <th>Createdatetime</th>
+                <th>Updatedatetime</th>
+                <th>Lastlogindatetime</th>
+                <th>Fullyfilled</th>
+                <th>Profilepicture</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('userlocal_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <td>{{ user.facebookID }}</td>
+                <td>{{ user.fullName }}</td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>{% if user.createDatetime %}{{ user.createDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if user.updateDatetime %}{{ user.updateDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if user.lastLoginDatetime %}{{ user.lastLoginDatetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if user.fullyFilled %}Yes{% else %}No{% endif %}</td>
+                <td>{{ user.profilePicture }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userlocal_show', { 'id': user.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userlocal_edit', { 'id': user.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userlocal_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
